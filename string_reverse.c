@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /*
   Pre:	A null terminated string is pointed to by argument "string"
