@@ -63,12 +63,12 @@ int main (int  argc, char *argv[]) {
       // Initialize MatchCounts
       for (i = 0; i < NUMHEADERS; i++) MatchCounts[i] = 0;
       while (fgets(FileBuff, BUFFSIZE, File)) { // Read each line of the file
-	CurrentChar = FileBuff;
-	while(*CurrentChar != ':' && *CurrentChar) CurrentChar++;
-	if (*CurrentChar) { // We didn't get a null, found the ':'
-	  *CurrentChar = 0;
-	  match(FileBuff, Headers, MatchCounts);
-	}
+		  CurrentChar = FileBuff;
+		  while(*CurrentChar != ':' && *CurrentChar) CurrentChar++;
+		  if (*CurrentChar) { // We didn't get a null, found the ':'
+			 *CurrentChar = 0;
+			 match(FileBuff, Headers, MatchCounts);
+		  }
       }
     }
     close(File);
@@ -94,18 +94,18 @@ void match(char *input, char *strgs[], int counts[]) {
   unsigned int j = 0;
   char stop_processing = FALSE;
   char input_found = FALSE;
-
+  
   for (i = 0; i < NUMHEADERS && !input_found; i++) {
     while (!stop_processing) {
       if (input[j] == 0 && strgs[i][j] == 0) {
-	//Reached end of string, found a match
-	counts[i]++;
-	stop_processing = TRUE;
-	input_found = TRUE;
+		  //Reached end of string, found a match
+		  counts[i]++;
+		  stop_processing = TRUE;
+		  input_found = TRUE;
       } else if (input[j] == strgs[i][j]) {
-	j++; // Good so far, check next char
+		  j++; // Good so far, check next char
       } else {
-	stop_processing = TRUE;
+		  stop_processing = TRUE;
       }
     }
     stop_processing = FALSE;
